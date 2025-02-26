@@ -1,0 +1,89 @@
+.container{
+    margin: 0;
+    padding: 0;
+    border:3px solid #6DC2D9;
+    width: 600px;
+    left: calc(50% - 300px);
+    position: relative;
+    background-color: #34495e;
+    color: #fff;
+}
+
+label {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+    
+}
+input[type="number"] , .submit{
+    background-color: white;
+    margin: 7px;
+    width: 150px;
+    position: relative;
+    left:calc(50% - 75px);
+    border:none;
+    border-bottom:3px solid black;
+    font-size: 15px;
+    height: 10px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s;
+}
+input[type="number"]:hover {
+    background-color: white;
+    width: 200px;
+    left:calc(50% - 100px);
+    border-bottom:2px solid gray;
+    
+}
+
+.submit{
+    background-color:#6DC2D9;
+    border-radius: 12px;
+    height: 40px;
+    left:calc(50% - 75px);
+    font-size: 18px;
+    transition: all 0.5s;
+    border: none;
+}
+.submit:hover{
+    background-color:#7ddffa;
+    
+}
+
+input[type="datetime-local"] {
+    height: 45px; /* Ajustez la hauteur selon vos besoins */
+    font-size: 0px; /* Taille de police */
+    width: 45px;
+    left:calc(50% - 22.5px);
+    margin: 7px;
+    position: relative;
+    display: flex;
+    border: 1px solid black;
+    border-radius:10px ;
+    padding: 0;
+    background-color: #6DC2D9;
+    transition: all 0.3s;
+}
+
+input[type="datetime-local"]:hover{
+    background-color: #7ddffa;
+    border:1px solid black;
+
+}
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px; /* Largeur du bouton du calendrier */
+    height: 40px; /* Hauteur du bouton du calendrier */
+    cursor: pointer; /* Changer le curseur au survol */
+}

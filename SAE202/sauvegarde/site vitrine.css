@@ -1,0 +1,80 @@
+@font-face {
+  font-family: 'Coolvetica';
+  src: url(/coolvetica/coolvetica\ compressed\ hv.otf),format('collvetica hv'),
+      url(/coolvetica/coolvetica\ condensed\ rg.otf),format('collvetica condensed rg'),
+      url(/coolvetica/coolvetica\ crammed\ rg.otf),format('collvetica crammed rg'),
+      url(/coolvetica/coolvetica\ rg\ it.otf),format('collvetica rg it'),
+      url(/coolvetica/coolvetica\ rg.otf)format('collvetica rg'),;
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Akira';
+      src: url(akira_expanded/Akira\ Expanded\ Demo.otf),format('akira');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+/*positionement boite*/
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #333334;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.titre{
+  font-family: 'Coolvetica',sans-serif;
+  font-size: 45px;
+  color: #F7F7F7;
+
+  padding-top: 20px;
+
+}
+
+
+footer{
+    padding: 0;
+    margin: 0;
+    background-color: #34495e;
+    padding-bottom: 200px;
+    
+}
+footer::before{
+      position: absolute;
+      content: "";
+      width: 80%;
+      height: 3px;
+      left: 10%;
+      background: white;
+}
+footer > h1{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    margin: 0px;
+    padding: 0px;
+    padding-top:50px ;
+    padding-bottom: 50px;
+}
+
+
+/*animation/modification element*/
+
+body::-webkit-scrollbar {
+    width: 0; /* width of the entire scrollbar */
+  }
+  
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: gray; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+  }
+
+/*menu*/

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="icon" href="images/code_development_icon_194574.svg" type="image/SVG">
+</head>
+<title>acceuil</title>
+<style>
+    body {
+        font-family: inter, sans-serif;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        background: #0a0a0a;
+        color: rgb(240, 240, 240);
+    }
+
+    #header_1 {
+        background: #282C34;
+        border-radius: 0 0 30px 30px;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        color: white;
+        box-shadow: 0px 0px 15px 10px black;
+        font-family: 'Kode Mono', monospace;
+    }
+    span{
+        color: rgb(255, 122, 122);;
+    }
+
+
+    #contenu-text {
+        position: relative;
+        height: 22vh;
+        background: linear-gradient(to right, white 90%, #d9d9d9 90%);
+        border: black 4px solid;
+    }
+
+    #profil,
+    #projets,
+    #contact,
+    #error {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        /* Change le curseur en une main lorsqu'on passe dessus */
+    }
+
+    #profil:hover,
+    #projets:hover,
+    #contact:hover,
+    #error:hover svg {
+        transform: scale(1.1);
+        /* Augmente la taille des éléments SVG lorsqu'on passe la souris */
+    }
+
+    svg {
+        transition: transform 0.3s ease;
+        /* Ajoute une transition pour rendre le changement de taille fluide */
+    }
+
+    #container-portfolio-en-travaux {
+        position: fixed;
+        align-items: center;
+        justify-content: center;
+        top: -100vh;
+        max-height: 100vh;
+        overflow-y: auto;
+        visibility: hidden;
+        transition: all 0.8s ease;
+        opacity: 0;
+    }
+
+    #container-portfolio-en-travaux.show {
+        opacity: 1;
+        visibility: visible;
+        top: 10vh;
+        z-index: 100;
+    }
+
+    /* background*/
+
+    .container {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            z-index: -10;
+        }
+
+        .code-rain {
+            position: relative;
+            color: #4a9eff;
+            font-size: 14px;
+            opacity: 1;
+            animation: rain 15s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes rain {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.2;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        .network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .node {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #4a9eff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            animation: pulse 2s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.2;
+            }
+        }
+
+        .line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4a9eff, transparent);
+            transform-origin: 0 50%;
+            z-index: 1;
+            opacity: 0.2;
+        }
+
+        /* animation h1 */
+
+        @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+h1 {
+  border-right: solid 3px rgba(255,255,255,.75);
+  white-space: nowrap;
+  overflow: hidden;    
+  font-family: 'Source Code Pro', monospace;  
+  font-size: 2vw;
+  color: rgba(255,255,255,100);
+}
+
+/* Animation */
+h1 {
+  animation: animated-text 4s steps(29,end) 1.5s 1 normal both,
+             animated-cursor 600ms steps(29,end) infinite;
+
+}
+
+/* text animation */
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 100%;}
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="network" id="network"></div>
+    </div>
+    <div class="container-fluid p-0">
+        <div class="row animate__animated animate__fadeInDown animate__delay" id="header_1" style="height: 22vh; animation-delay: 0.3s;">
+            <div class="col-md-4 d-flex align-items-center justify-content-center text-center p-0">
+                <button type="button" class="btn fs-2 animate__animated animate__fadeInDown" 
+                    style="width: 100%; height: 90%; border-radius: 30px; color: rgb(240, 240, 240); font-family: 'Kode Mono', monospace; animation-delay: 0.6s;font-style: italic;"><span>&lt;</span>Header 1<span>&#47;&gt;</span></button>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center text-center p-0">
+                <button type="button" class="btn fs-2 animate__animated animate__fadeInDown"
+                    style="width: 100%; height: 90%; border-radius: 30px; color: rgb(240, 240, 240); font-family: 'Kode Mono', monospace; animation-delay: 0.9s;font-style: italic;"><span>&lt;</span>Header 2<span>&#47;&gt;</span></button>
+            </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center text-center p-0">
+                <button type="button" class="btn fs-2 animate__animated animate__fadeInDown"
+                    style="width: 100%; height: 90%; border-radius: 30px; color: rgb(240, 240, 240); font-family: 'Kode Mono', monospace; animation-delay: 1.2s;font-style: italic;"><span>&lt;</span>Header 3<span>&#47;&gt;</span></button>
+            </div>
+        </div>
+        <div class="row g-0" style="height: 60vh;">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6 d-flex align-items-center justify-content-center text-center">
+                <h1 class="mt-5">Bienvenue dans mes travaux</h1>
+            </div>
+            <div class="col-md-3 p-0 m-0 animate__animated animate__fadeInRightBig" style="animation-delay: 3.6s;">
+                <div class="row flex-column align-items-end g-0" style="height: 100%;">
+                    <div class="col-md-4 m-0 d-flex align-items-center justify-content-center"
+                        style="height: 50%; width: 50%;">
+                        <button type="button" class="btn me-4 fs-4"
+                            style="border: #949393 3px solid; color: rgb(240, 240, 240);"
+                            onclick="window.location.href = 'profil1.html';" id="profil">Mon profil
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#949393"
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="col-md-4 m-0 d-flex align-items-center justify-content-center"
+                        style="height: 50%; width: 50%;">
+                        <button type="button" class="btn me-4 fs-4"
+                            style="border: #949393 3px solid; color: rgb(240, 240, 240);"
+                            onclick="window.location.href = 'projets.html';" id="projets">Mes projets
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#949393"
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                            </svg>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <footer class="row g-0" style="height: 18vh;">
+            <div class="col-md-5 p-0 m-0 text-center"></div>
+            <div class="col-md-2 d-flex align-items-end justify-content-center" id="error">
+                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="#d9d9d9" viewBox="0 0 16 16" class="animate__animated animate__fadeInUp" style="animation-delay: 4s;">
+                    <g transform="rotate(90 8 8)">
+                        <path
+                            d="M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"
+                            fill="#949393" />
+                    </g>
+                </svg>
+            </div>
+            <div class="col-md-5 p-0 m-0 text-center"></div>
+        </footer>
+
+    </div>
+    <script src="canva.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var element = document.getElementById("error");
+
+            // Ajouter une classe d'animation lorsque l'élément est cliqué
+            element.addEventListener("click", function () {
+                element.classList.add("animate__animated", "animate__shakeX");
+
+                // Supprimer les classes d'animation après la fin de l'animation pour permettre de la rejouer
+                element.addEventListener("animationend", function () {
+                    element.classList.remove("animate__animated", "animate__shakeX");
+                }, { once: true });
+            });
+        });
+    </script>
+
+    <!-- background -->
+
+    <script>
+        function createCodeRain() {
+            const container = document.querySelector('.container');
+            const codeSnippets = [
+                'function()', 'while(true)', 'if(dev){};', 'const app = {};',
+                '{ code }', '<div>', '</div>', 'npm install', 'git push',
+                'docker run', 'sudo apt-get', '#!/bin/bash'
+            ];
+
+            setInterval(() => {
+                const code = document.createElement('div');
+                code.className = 'code-rain';
+                code.style.left = Math.random() * 100 + 'vw';
+                code.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+                container.appendChild(code);
+
+                setTimeout(() => {
+                    container.removeChild(code);
+                }, 15000);
+            }, 1000);
+        }
+
+        function createNetwork() {
+            const network = document.getElementById('network');
+            const nodes = 15; // Nombre de nœuds
+            const nodeElements = [];
+            const lines = [];
+            
+            function createNode() {
+                return {
+                    element: document.createElement('div'),
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    vx: (Math.random() - 0.5) * 1.5,
+                    vy: (Math.random() - 0.5) * 1.5
+                };
+            }
+
+            // Création des nœuds
+            for (let i = 0; i < nodes; i++) {
+                const node = createNode();
+                node.element.className = 'node';
+                network.appendChild(node.element);
+                nodeElements.push(node);
+            }
+
+            // Création des connexions
+            for (let i = 0; i < nodes; i++) {
+                for (let j = i + 1; j < nodes; j++) {
+                    if (Math.random() < 0.5) { // Augmenté la probabilité de connexion
+                        const line = document.createElement('div');
+                        line.className = 'line';
+                        network.appendChild(line);
+                        lines.push({
+                            element: line,
+                            from: nodeElements[i],
+                            to: nodeElements[j]
+                        });
+                    }
+                }
+            }
+
+            function updatePositions() {
+                // Mise à jour des positions des nœuds
+                nodeElements.forEach(node => {
+                    node.x += node.vx;
+                    node.y += node.vy;
+
+                    // Rebond sur les bords
+                    if (node.x <= 0 || node.x >= window.innerWidth) {
+                        node.vx *= -1;
+                        node.x = Math.max(0, Math.min(window.innerWidth, node.x));
+                    }
+                    if (node.y <= 0 || node.y >= window.innerHeight) {
+                        node.vy *= -1;
+                        node.y = Math.max(0, Math.min(window.innerHeight, node.y));
+                    }
+
+                    // Mise à jour de la position du nœud
+                    node.element.style.left = `${node.x}px`;
+                    node.element.style.top = `${node.y}px`;
+                });
+
+                // Mise à jour des lignes
+                lines.forEach(line => {
+                    const dx = line.to.x - line.from.x;
+                    const dy = line.to.y - line.from.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    const angle = Math.atan2(dy, dx);
+
+                    line.element.style.width = `${distance}px`;
+                    line.element.style.left = `${line.from.x}px`;
+                    line.element.style.top = `${line.from.y}px`;
+                    line.element.style.transform = `rotate(${angle}rad)`;
+                });
+
+                requestAnimationFrame(updatePositions);
+            }
+
+            // Gestion du redimensionnement
+            window.addEventListener('resize', () => {
+                nodeElements.forEach(node => {
+                    node.x = Math.min(node.x, window.innerWidth);
+                    node.y = Math.min(node.y, window.innerHeight);
+                });
+            });
+
+            updatePositions();
+        }
+
+        createCodeRain();
+        createNetwork();
+    </script>
+
+</body>
+
+</html>

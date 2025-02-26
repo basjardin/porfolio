@@ -1,0 +1,279 @@
+* {
+	font-family: 'Coolvetica',sans-serif;
+}
+
+.welcome {
+    font-size: 70px;
+    color: #6DC2D9;
+    text-align: center;
+    margin-bottom: 0px;
+	padding-bottom: 0;
+	background-color: #333334;
+	width: 100%;
+}
+
+.présentation{
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    font-family: 'Coolvetica ', sans-serif;
+	background-repeat: no-repeat;
+	background-size: cover; 
+	width: 100%;
+	
+}
+.logo{
+	object-fit: contain;
+	height: 250px;
+	padding: 100px;
+}
+.contour_logo{
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 40%;
+	background-color: #333334;
+}
+.contour_logo::before{
+  	position: absolute;
+  	content: "";
+  	width: 100px;
+  	height: 10px;
+  	left: 0;
+  	top: 0;
+  	background: #fff;
+	animation: infinite animate_logo 20s ;
+}
+.contour_logo::after{
+	position: absolute;
+	content: "";
+	left:calc(100% - 100px);
+	top:calc(100% - 10px);
+	width: 100px;
+	height: 10px;
+	background: #fff;
+  animation: infinite animate_logo2 20s ;
+}
+
+
+
+a {
+	text-decoration: none;
+	color:inherit;
+}
+
+:root {
+	--bgcolor: #333334;
+}
+
+
+body {
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	color: white;
+}
+#nav {
+	list-style: none;
+	background-color: #333334;
+}
+.nav-a {
+	font-size: 5rem;
+	position: relative;
+	text-transform: uppercase;
+	transition: all 300ms ease;
+	width: fit-content;
+	cursor: pointer;
+}
+.nav-a:hover {
+	transform: skew(10deg);
+}
+.nav-a::before {
+	content: attr(data-name);
+	position: absolute;
+	top: 0;
+	left: -20px;
+	background: var(--bgcolor);
+	height: 3rem;
+	overflow: hidden;
+	transition: all 300ms ease;
+	padding-left: 20px;
+}
+.nav-a:hover::before {
+	top: -3px;
+	left: 0px;
+	color: #6DC2D9;
+}
+
+.nav-a::after {
+	content: "";
+	height: 4px;
+	width: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #6DC2D9;
+	transition: all 300ms ease;
+}
+.nav-a:hover::after {
+	width: 120%;
+	outline: 5px solid var(--bgcolor);
+}
+
+/* //////////////////////////// */
+@keyframes animate_logo {
+	0%{
+		left:0;
+		top:0;
+		width: 100px;
+		height: 10px;
+
+	}
+	8.33%{
+		left:calc(100% - 100px);
+		top:0;
+		width: 100px;
+		height: 10px;
+	}
+	16.66%{
+		left:calc(100% - 10px);
+		top:0;
+		width: 10px;
+		height: 10px;
+	}
+	24.99%{
+		left:calc(100% - 10px);
+		top:0;
+		width: 10px;
+		height: 100px;
+	}
+	33.32%{
+		left:calc(100% - 10px);
+		top:calc(100% - 100px);
+		width: 10px;
+		height: 100px;
+	}
+	41.65%{
+		left:calc(100% - 10px);
+		top:calc(100% - 10px);
+		width: 10px;
+		height: 10px;
+	}
+	49.98%{
+		left:calc(100% - 100px);
+		top:calc(100% - 10px);
+		width: 100px;
+		height: 10px;
+	}
+	58.31%{
+		left:0;
+		top:calc(100% - 10px);
+		width: 100px;
+		height: 10px;
+	}
+	66.64%{
+		left:0;
+		top:calc(100% - 10px);
+		width: 10px;
+		height: 10px;
+	}
+	74.97%{
+		left:0;
+		top:calc(100% - 100px);
+		width: 10px;
+		height: 100px;
+	}
+	83.3%{
+		left:0;
+		top:0;
+		width: 10px;
+		height: 100px;
+	}
+	91.63%{
+		left:0;
+		top:0;
+		width: 10px;
+		height: 10px;
+	}
+
+	
+}
+@keyframes animate_logo2 {
+	
+	0%{
+		left:calc(100% - 100px);
+		top:calc(100% - 10px);
+		width: 100px;
+		height: 10px;
+	}
+	8.33%{
+		left:0;
+		top:calc(100% - 10px);
+		width: 100px;
+		height: 10px;
+	}
+	16.66%{
+		left:0;
+		top:calc(100% - 10px);
+		width: 10px;
+		height: 10px;
+	}
+	24.99%{
+		left:0;
+		top:calc(100% - 100px);
+		width: 10px;
+		height: 100px;
+	}
+	33.32%{
+		left:0;
+		top:0;
+		width: 10px;
+		height: 100px;
+	}
+	41.65%{
+		left:0;
+		top:0;
+		width: 10px;
+		height: 10px;
+	}
+
+	49.98%{
+		left:0;
+		top:0;
+		width: 100px;
+		height: 10px;
+
+	}
+	58.31%{
+		left:calc(100% - 100px);
+		top:0;
+		width: 100px;
+		height: 10px;
+	}
+	66.64%{
+		left:calc(100% - 10px);
+		top:0;
+		width: 10px;
+		height: 10px;
+	}
+	74.97%{
+		left:calc(100% - 10px);
+		top:0;
+		width: 10px;
+		height: 100px;
+	}
+	83.3%{
+		left:calc(100% - 10px);
+		top:calc(100% - 100px);
+		width: 10px;
+		height: 100px;
+	}
+	91.63%{
+		left:calc(100% - 10px);
+		top:calc(100% - 10px);
+		width: 10px;
+		height: 10px;
+	}
+}
+

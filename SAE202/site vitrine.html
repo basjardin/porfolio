@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" href="LHDR Logo bleu.png">
+    <link rel="stylesheet" href="site vitrine.css">
+    <link rel="stylesheet" href="menu.css">
+    <meta charset="UTF-8">
+    <meta name="viewport", initial-scale="1.0">
+    <title>Les horizons de Rouen</title>
+</head>
+<body>
+  <a class="welcome" id="welcome">Les Horizons de Rouen</a>
+  <p class="présentation">venez découvrir les merveilles de Rouen</p>
+  <div class="contour_logo"><img  class="logo" src="LHDR Logo bleu.png" loading="lazy"></div>
+  
+    <ul id="nav">
+    <li class="nav-link">
+      <a href="#attraction" class="nav-a" data-name="attraction" style="color: #6DC2D9;">attraction</a>
+    </li>
+    <li class="nav-link">
+      <a href="#date_ouverture" class="nav-a" data-name="ouverture">ouverture</a>
+    </li>
+    <li class="nav-link">
+      <a href="#inscription" class ="nav-a" data-name="inscription">inscription</a>
+    </li>
+  </ul>
+<!-- espace-------------------------------------------------------------------------------------------------------------------------------------------------------->
+<div class="espace"></div>
+<!-- attraction-------------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="attraction"><h2>Découvrez notre attraction:</h2>
+<!--arrow_down--------------------------------------------------------------------------------------------------------------------------------------------------------->
+  <a href="#attraction2" class="arrow_down_p">continuer</a>
+  <a href="#attraction2" class="arrow_down"></a>
+
+<div class="animation-attraction">
+<div class="attraction">
+    <p>Découvrez une attraction immersive et incroyable utilisant des illusions d'optique et des effets 3D parmi les plus immersifs de Rouen.</p>
+    <img src="affiche3 V2.png" alt="exemple_image" loading="lazy">
+    <img src="Chasseurs-de-Tornades-3-scaled.webp" alt="exemple_image" style="padding-bottom: 29px;" loading="lazy">
+</div>
+</div>
+</div>
+
+<!-- espace-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div class="espace2"></div>
+
+<!-- attraction2-------------------------------------------------------------------------------------------------------------------------------------------------------->
+<div id="attraction2"><h2>Explorer l’histoire de Rouen:</h2>
+<!--arrow_down--------------------------------------------------------------------------------------------------------------------------------------------------------->
+  <a href="#attraction3" class="arrow_down_p2">continuer</a>
+  <a href="#attraction3" class="arrow_down2"></a>
+
+<div class="animation-attraction2">
+<div class="attraction2">
+    <p>Avec Pierre et Sophie, réexplorez l’histoire à travers les bâtiments les plus iconiques de Rouen</p>
+    
+    <div id="slider">
+      <img src="affiche4 V2.png" id="slide" loading="lazy">
+      <div id="precedent" onclick="ChangeSlide(-1)"><</div>
+      <div id="suivant" onclick="ChangeSlide(1)">></div>
+    </div>
+</div>
+</div>
+</div>
+<!-- espace-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div class="espace3"></div>
+
+
+<!-- attraction3-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<div id="attraction3"><h2>Répondez aux énigmes des léopards</h2>
+
+  <a href="#date_ouverture" class="arrow_down_p">continuer</a>
+  <a href="#date_ouverture" class="arrow_down"></a>
+
+  <div class="animation-attraction3">
+  <div class="attraction3">
+      <p>Répondez aux énigmes des léopards avec Pierre et Sophie pour pouvoir revenir à votre époque et prouver que vous êtes de vrais Normands.</p>
+  </div>
+  </div>
+
+  <div class="espace4"></div>
+
+<div id="date_ouverture"><h1>date d'ouverture</h1>
+<p>Au chai a vin de Rouen entre le boulevard Richard-Waddington et le quai Émile-Duchemin</p>
+  <a href="#inscription" class="arrow_down_p3">continuer</a>
+  <a href="#inscription" class="arrow_down3"></a>
+
+
+<table class="opening-hours">
+  <thead>
+      <tr>
+          <th>Jour</th>
+          <th>Ouverture</th>
+          <th>Fermeture</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Lundi</td>
+          <td>10:00</td>
+          <td>16:00</td>
+      </tr>
+      <tr>
+          <td>Mardi</td>
+          <td>10:00</td>
+          <td>16:00</td>
+      </tr>
+      <tr>
+          <td>Mercredi</td>
+          <td>fermé</td>
+          <td>18:00</td>
+      </tr>
+      <tr>
+          <td>Jeudi</td>
+          <td>10:00</td>
+          <td>16:00</td>
+      </tr>
+      <tr>
+          <td>Vendredi</td>
+          <td>10:00</td>
+          <td>16:00</td>
+      </tr>
+      <tr>
+          <td>Samedi</td>
+          <td>10:00</td>
+          <td>18:00</td>
+      </tr>
+      <tr>
+          <td>Dimanche</td>
+          <td>fermé</td>
+          <td>fermé</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+
+<footer id="inscription">
+    <h1>inscription</h1>
+
+    <a href="#welcome" class="arrow_down_p4">revenir au menu</a>
+    <a href="#welcome" class="arrow_down4"></a>
+
+    <div class="container">
+      <form action="#">
+    
+        <label>nombre d'adulte</label>
+        <input type="number"  name="nombre_adulte">
+    
+        <label>nombre d'enfant</label>
+        <input type="number"  name="nombre_enfant">
+    
+        <label>jour de rendez-vous:</label>
+        <input type="datetime-local" class="date-input">
+        
+        <input type="submit" value="valider" class="submit">
+    
+      </form>
+    </div>
+</footer>
+</body>
+</html>
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+const slide = ["affiche1 V2.png", "affiche2 V2.png", "affiche3 V2.png", "affiche4 V2.png"];
+let numero = 0;
+
+function ChangeSlide(sens) {
+    numero = numero + sens;
+    if (numero < 0)
+        numero = slide.length - 1;
+    if (numero > slide.length - 1)
+        numero = 0;
+    document.getElementById("slide").src = slide[numero];
+}
+
+
+
+
+ // Fonction pour empêcher le comportement par défaut de l'événement
+ function preventDefault(e) {
+            e.preventDefault();
+        }
+
+        // Fonction pour bloquer le défilement
+        function disableScroll() {
+            document.addEventListener('wheel', preventDefault, { passive: false });
+            document.addEventListener('touchmove', preventDefault, { passive: false });
+        }
+
+        // Fonction pour rétablir le défilement
+        function enableScroll() {
+            document.removeEventListener('wheel', preventDefault);
+            document.removeEventListener('touchmove', preventDefault);
+        }
+
+        // Activer le blocage du défilement au chargement de la page
+        window.onload = disableScroll;
+
+</script>

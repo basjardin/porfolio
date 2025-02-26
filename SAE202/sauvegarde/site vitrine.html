@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" href="photo.jpg">
+    <link rel="stylesheet" href="site vitrine.css">
+    <link rel="stylesheet" href="blabla.css">
+    <link rel="stylesheet" href="menu.css">
+    <meta charset="UTF-8">
+    <meta name="viewport", initial-scale="1.0">
+    <title>Les horizons de Rouen</title>
+</head>
+<body>
+  <h1 class="welcome">Les Horizons de Rouen</houvert>
+  <p class="présentation">venez découvrir les merveilles de Rouen</p>
+  <ul id="nav">
+    <li class="nav-link">
+      <a href="#attraction" class="nav-a" data-name="attraction" >attraction</a>
+    </li>
+    <li class="nav-link">
+      <a href="#ouverture" class="nav-a" data-name="ouverture">ouverture</a>
+    </li>
+    <li class="nav-link">
+      <a href="#services" class ="nav-a" data-name="services">services</a>
+    </li>
+    <li class="nav-link">
+      <a href="#billeterie" class ="nav-a" data-name="billeterie">billeterie</a>
+    </li>
+  </ul>
+<script>
+  $('a[href*="#"]').on('click', function(event) {
+
+event.preventDefault();
+
+var target = $(this).attr('href');
+
+$('html, body').animate({
+
+  scrollTop: $(target).offset().top
+
+}, 1000);
+
+});
+</script>
+<div class="espace"></div>
+
+<h1 class="titre">notre attraction:</houvert>
+<div class="animated_card2">
+  <div class="blabla" id="attraction">
+    <img src="photo.jpg" alt="">
+    <p>découvrer une attraction immersif et incroyable utilisant des illustion d'optique et des effet 3D les plus immersifs du Rouen</p>
+  </div>
+</div>
+
+<div class="espace"></div>
+
+
+<div class="animated_card2">
+  <div class="blabla">
+      <img src="photo.jpg" alt="">
+      <p>vivez une histoire incroyable avec pierre et sophie en explorant les monuments de rouen a differente époque et provait au léopard de normandie que vous ête digne de pouvoir sortir </p>
+  </div>
+</div>
+
+  <div class="espace"></div>
+
+  <div class="animated_card2">
+    <div class="blabla">
+        <img src="photo.jpg" alt="">
+        <p>blabla</p>
+    </div>
+  </div>
+
+  <div class="espace"></div>
+
+  <div class="animated_card2">
+    <div class="blabla">
+        <img src="photo.jpg" alt="">
+        <p>blabla</p>
+    </div>
+  </div>
+
+<footer>
+    <p>inscription</p>
+</footer>
+</body>
+</html>

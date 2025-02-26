@@ -1,0 +1,126 @@
+
+:root{
+  --animation-blabla:150px;
+}
+.animated_card2{
+ display: grid;
+ place-items: center;
+ position: relative;
+ height: 210px;
+ width: 100%;
+ background-color: #6DC2D9;
+}
+
+.animated_card2{
+  overflow: hidden;
+}
+.animated_card2::before{
+  position: absolute;
+  content: "";
+  width: var(--animation-blabla);
+  height: 5px;
+  left: 0;
+  top: 0;
+  background: #34495e;
+  animation: infinite animate2 20s ;
+}
+
+@keyframes animate2{
+  0%{ 
+    left: 0;
+    top: 0;
+    width: var(--animation-blabla);
+    height: 5px;
+  }
+  12.5%{
+    left:calc(100% - var(--animation-blabla));
+    top: 0;
+    width: var(--animation-blabla);
+    height: 5px;
+  }
+  25%{
+    left: calc(100% - 5px);
+    top: 0;
+    width: 5px;
+    height: var(--animation-blabla);
+  }
+  37.5%{
+    left: calc(100% - 5px);
+    top:  calc(100% - var(--animation-blabla));
+    width: 5px;
+    height: var(--animation-blabla);
+  }
+  50%{
+    left: calc(100% - var(--animation-blabla));
+    top: calc(100% - 5px);
+    width: var(--animation-blabla);
+    height: 5px;
+}
+  62.5%{
+    left: 0;
+    top: calc(100% - 5px);
+    width: var(--animation-blabla);
+    height: 5px;
+  }
+  75%{
+    left: 0;
+    top: calc(100% - var(--animation-blabla));
+    width: 5px;
+    height: var(--animation-blabla);
+  }
+  87.5%{
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: var(--animation-blabla);
+  }
+  100%{
+    left: 0;
+}}
+.animated_card2::after{
+  position: absolute;
+  content: "";
+  inset: 5px;
+  border-radius: 8px;
+}
+.blabla{
+  width: calc(100% - 10px);
+  height: 200px;
+  background-color: #34495E;
+  display:flex;
+  position: relative;
+
+}
+
+.blabla >img{
+  position: relative;
+   width: 200px;
+   height: 200px; 
+   margin: 0;
+   padding: 0;
+
+}
+.espace:nth-of-type(even) ~ .animated_card2 .blabla img{
+   position: absolute;
+   left: calc(100% - 200px);
+}
+
+.blabla >p{
+   position: relative;
+   color: white;
+   float: left;
+   font-family: 'coolvetica', sans-serif;
+   font-size: 30px;
+}
+
+.espace{
+  height: 200px;
+}
+body > .animated_card2:nth-of-type(4n) .blabla img{
+  position: absolute;
+  left: calc(100% - 200px);
+}
+body > .animated_card2:nth-of-type(4n) .blabla p{
+position: absolute;
+right: 200px;
+}

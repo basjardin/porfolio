@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horaires du Musée</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="box"></div>
+<style>
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+.box {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: lightblue;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;  /* Largeur de la partie verticale */
+    height: 100%; /* Hauteur de la boîte */
+    background-color: red;
+}
+
+.box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;  /* Largeur de la boîte */
+    height: 20px; /* Hauteur de la partie horizontale */
+    background-color: red;
+}
+</style>
+</body>
+</html>

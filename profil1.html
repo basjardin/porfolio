@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="icon" href="images/code_development_icon_194574.svg" type="image/SVG">
+  <title>mon profil</title>
+</head>
+<style>
+  body {
+    background-color: black;
+    color: rgb(240, 240, 240);
+    height: 100vh;
+
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+    width: 5px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    display: none;
+    background-color: #949393;
+    border-radius: 10px;
+  }
+
+  #accueil {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    /* Change le curseur en une main lorsqu'on passe dessus */
+  }
+
+  #accueil:hover,
+  #projets:hover svg {
+    transform: scale(1.1);
+    /* Augmente la taille des éléments SVG lorsqu'on passe la souris */
+  }
+
+  svg {
+    transition: transform 0.3s ease;
+    /* Ajoute une transition pour rendre le changement de taille fluide */
+  }
+
+  /* background */
+  #black-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+    opacity: 0;
+    transition: all 1s ease;
+    z-index: -1;
+  }
+
+  #black-background.show {
+    opacity: 0.7;
+    z-index: 9;
+  }
+
+  #border {
+    border-top: 4px solid rgb(240, 240, 240);
+    width: 100%;
+  }
+
+  div article {
+    height: 50px;
+    width: auto;
+  }
+
+  article svg {
+    height: 50%;
+  }
+
+  article h4 {
+    font-size: 20px;
+  }
+
+  span {
+    margin: 0;
+    padding: 0;
+    color: rgb(255, 122, 122);
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* background */
+
+  .container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -10;
+  }
+
+  .code-rain {
+    position: relative;
+    color: #4a9eff;
+    font-size: 14px;
+    opacity: 1;
+    animation: rain 15s linear infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes rain {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.2;
+    }
+
+    90% {
+      opacity: 0.2;
+    }
+
+    100% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+  }
+
+  .network {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #4a9eff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    animation: pulse 2s ease-in-out infinite;
+    opacity: 0;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.2;
+    }
+
+    50% {
+      transform: translate(-50%, -50%) scale(1.5);
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.2;
+    }
+  }
+
+  .line {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4a9eff, transparent);
+    transform-origin: 0 50%;
+    z-index: 1;
+    opacity: 0.2;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="network" id="network"></div>
+  </div>
+  <div id="black-background"></div>
+  <div class="container-fluid p-0 ">
+    <div class="row g-0">
+      <div class="col-md-2 ps-2 d-flex align-items-center justify-content-center animate__animated animate__fadeInLeft"
+        style="animation-delay: 1.5s;">
+        <button type="button" class="btn me-4 fs-4" style="border: #949393 3px solid; color: rgb(240, 240, 240);"
+          onclick="window.location.href = 'acceuil.html';" id="accueil">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#949393" class="bi bi-arrow-right"
+            viewBox="0 0 16 16">
+            <g transform="rotate(180 8 8)">
+              <path fill-rule="evenodd"
+                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+          </svg>
+          accueil
+        </button>
+      </div>
+      <div
+        class="col-md-8 d-flex align-items-center justify-content-center pb-5 mb-5 mt-5 animate__animated animate__fadeInDown">
+        <h1 style="font-family: 'Kode Mono', monospace;font-style: italic;"><span>&lt;</span>Mon
+          profil<span>&#47;&gt;</span></h1>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+    <div class="row g-0">
+      <div class="col-md-4 animate__animated animate__fadeInLeft" style="animation-delay: 0.6s;">
+        <div class="row g-0 d-flex flex-column " style="margin-left: 30px;">
+          <div class="col-md-4" style="width: 100%;margin-top: 100px;">
+            <img src="images\moi.jpg" class="rounded-circle animate__animated animate__fadeInDownBig"
+              style="animation-delay: 0.9s; height: 147px; width: 147px; object-fit: cover; margin-left: 50px;"
+              alt="ma photo de profil">
+            <h2 style="margin-left: 50px;">Robin Basjardin</h2>
+          </div>
+          <div class="col-md-2" style="width: 60%;">
+            <div id="border" style="margin-top: 20px; margin-bottom: 20px; margin-left: 30px;"></div>
+          </div>
+          <div class="col-md-6" style="width: 70%;">
+            <p style="margin-left: 50px;">Je suis un étudiant en BUT 2 MMI à Elbeuf, déterminé à trouver un stage pour
+              ma deuxième année du 31/03/2025 au 13/06/2025. Je suis un débutant sérieux, capable de gérer le stress du
+              travail en groupe et de m’adapter.</p>
+            <a href="CV.pdf" download="CV.pdf">
+              <button class="btn" style="background-color: rgb(240, 240, 240);margin-left: 50px;">Télécharger mon
+                CV</button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+        <div class="row g-0 d-flex flex-column ">
+          <div class="col-md-2" style="width: 100%;">
+            <h2 style="margin-left: 50px; margin-top: 200px;">Mes compétences</h2>
+          </div>
+          <div class="col-md-1" style="width: 70%;">
+            <div id="border" style="margin-top: 20px; margin-bottom: 20px; margin-left: 30px;"></div>
+          </div>
+          <div class="col-md-3" style="width: auto;">
+            <article class="badge html" style="background-color: #282C34; margin-left: 50px;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" fill="rgb(240, 240, 240)">
+                <path
+                  d="M64 32l34.94 403.21L255.77 480 413 435.15 448 32zm308 132H188l4 51h176l-13.51 151.39L256 394.48l-98.68-28-6.78-77.48h48.26l3.42 39.29L256 343.07l53.42-14.92L315 264H148l-12.59-149.59H376.2z">
+                </path>
+              </svg>
+              <h4>HTML</h4>
+            </article>
+            <article class="badge css" style="background-color: #282C34;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" fill="rgb(240, 240, 240)">
+                <path
+                  d="M64 32l35 403.22L255.77 480 413 435.15 448 32zm290.68 334.9L256.07 395l-98.46-28.24-6.75-77.76h48.26l3.43 39.56 53.59 15.16.13.28 53.47-14.85 5.64-64.15H203l-4-50h120.65l4.35-51H140l-4-49h240.58z">
+                </path>
+              </svg>
+              <h4>CSS</h4>
+            </article>
+            <article class="badge javascript" style="background-color: #282C34;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512" fill="rgb(240, 240, 240)">
+                <path
+                  d="M32 32v448h448V32zm240 348c0 43.61-25.76 64.87-63.05 64.87-33.68 0-53.23-17.44-63.15-38.49l34.28-20.75c6.61 11.73 11.63 21.65 26.06 21.65 12 0 21.86-5.41 21.86-26.46V240h44zm99.35 63.87c-39.09 0-64.35-17.64-76.68-42L329 382c9 14.74 20.75 24.56 41.5 24.56 17.44 0 27.57-7.72 27.57-19.75 0-14.43-10.43-19.54-29.68-28l-10.52-4.52c-30.38-12.92-50.52-29.16-50.52-63.45 0-31.57 24.05-54.63 61.64-54.63 26.77 0 46 8.32 59.85 32.68L396 290c-7.22-12.93-15-18-27.06-18-12.33 0-20.15 7.82-20.15 18 0 12.63 7.82 17.74 25.86 25.56l10.52 4.51c35.79 15.34 55.94 31 55.94 66.16.01 37.9-29.76 57.64-69.76 57.64z">
+                </path>
+              </svg>
+              <h4>Javascript</h4>
+            </article>
+            <article class="badge php" style="background-color:#282C34;">
+              <svg viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg" fill="rgb(240, 240, 240)">
+                <path
+                  d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z">
+                </path>
+              </svg>
+              <h4>PHP</h4>
+            </article>
+            <article class="badge MYSQL" style="background-color: #282C34;">
+              <svg fill="rgb(240, 240, 240)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 95.103 95.103" xml:space="preserve">
+                <g>
+                  <g id="Layer_1_14_">
+                    <g>
+                      <g>
+                        <g>
+                          <path d="M47.561,0C25.928,0,8.39,6.393,8.39,14.283v11.72c0,7.891,17.538,14.282,39.171,14.282
+                                         c21.632,0,39.17-6.392,39.17-14.282v-11.72C86.731,6.393,69.193,0,47.561,0z">
+                          </path>
+                        </g>
+                      </g>
+                      <g>
+                        <g>
+                          <path d="M47.561,47.115c-20.654,0-37.682-5.832-39.171-13.227c-0.071,0.353,0,19.355,0,19.355
+                                         c0,7.892,17.538,14.283,39.171,14.283c21.632,0,39.17-6.393,39.17-14.283c0,0,0.044-19.003-0.026-19.355
+                                         C85.214,41.284,68.214,47.115,47.561,47.115z"></path>
+                        </g>
+                      </g>
+                      <path
+                        d="M86.694,61.464c-1.488,7.391-18.479,13.226-39.133,13.226S9.875,68.854,8.386,61.464L8.39,80.82
+                                 c0,7.891,17.538,14.282,39.171,14.282c21.632,0,39.17-6.393,39.17-14.282L86.694,61.464z">
+                      </path>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+              <h4>Sql</h4>
+            </article>
+
+
+          </div>
+          <div class="col-md-2" style="width: 100%;">
+            <h2 style="margin-left: 50px; margin-top: 14px;">Mes outils</h2>
+          </div>
+          <div class="col-md-1" style="width: 80%;">
+            <div id="border" style="margin-top: 20px; margin-bottom: 20px; margin-left: 30px;"></div>
+          </div>
+          <div class="col-md-3" style="width: auto;">
+            <article class="badge wordpress" style="background-color: #282C34; margin-left: 50px;">
+              <svg fill="rgb(240, 240, 240)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 96.24 96.24" xml:space="preserve">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <g>
+                    <path
+                      d="M48.122,0C21.587,0,0.001,21.585,0.001,48.118c0,26.535,21.587,48.122,48.12,48.122c26.532,0,48.117-21.587,48.117-48.122 C96.239,21.586,74.654,0,48.122,0z M4.857,48.118c0-6.271,1.345-12.227,3.746-17.606l20.638,56.544 C14.81,80.042,4.857,65.243,4.857,48.118z M48.122,91.385c-4.247,0-8.346-0.623-12.222-1.763L48.88,51.903l13.301,36.433 c0.086,0.215,0.191,0.411,0.308,0.596C57.992,90.514,53.16,91.385,48.122,91.385z M54.083,27.834 c2.604-0.137,4.953-0.412,4.953-0.412c2.33-0.276,2.057-3.701-0.277-3.564c0,0-7.007,0.549-11.532,0.549 c-4.25,0-11.396-0.549-11.396-0.549c-2.332-0.137-2.604,3.427-0.273,3.564c0,0,2.208,0.275,4.537,0.412l6.74,18.469l-9.468,28.395 L21.615,27.835c2.608-0.136,4.952-0.412,4.952-0.412c2.33-0.275,2.055-3.702-0.278-3.562c0,0-7.004,0.549-11.53,0.549 c-0.813,0-1.77-0.021-2.784-0.052C19.709,12.611,33.008,4.856,48.122,4.856c11.265,0,21.519,4.306,29.215,11.357 c-0.187-0.01-0.368-0.035-0.562-0.035c-4.248,0-7.264,3.702-7.264,7.679c0,3.564,2.055,6.582,4.248,10.146 c1.647,2.882,3.567,6.585,3.567,11.932c0,3.704-1.422,8-3.293,13.986l-4.315,14.421L54.083,27.834z M69.871,85.516l13.215-38.208 c2.471-6.171,3.29-11.106,3.29-15.497c0-1.591-0.104-3.07-0.292-4.449c3.38,6.163,5.303,13.236,5.301,20.758 C91.384,64.08,82.732,78.016,69.871,85.516z">
+                    </path>
+                  </g>
+                </g>
+              </svg>
+              <h4>Wordpress</h4>
+            </article>
+            <article class="badge Filezilla" style="background-color: #282C34;">
+              <svg fill="rgb(240, 240, 240)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M32.005 2.479v-1.411c-0.287 0-0.563-0.115-0.76-0.313-0.199-0.197-0.313-0.473-0.313-0.76h-1.411c-0.032 0.593-0.537 1.052-1.125 1.021-0.552-0.027-0.995-0.469-1.021-1.021h-1.416c-0.037 0.593-0.543 1.047-1.136 1.011-0.541-0.036-0.973-0.469-1.005-1.011h-1.411c-0.032 0.593-0.537 1.052-1.131 1.021-0.547-0.027-0.989-0.469-1.021-1.021h-1.411c-0.032 0.593-0.532 1.052-1.125 1.021-0.552-0.027-0.989-0.469-1.021-1.021h-1.411c-0.036 0.593-0.541 1.047-1.136 1.011-0.541-0.036-0.973-0.469-1.011-1.011h-1.411c-0.016 0.593-0.511 1.057-1.099 1.036-0.563-0.020-1.016-0.473-1.037-1.036h-1.411c-0.032 0.593-0.537 1.052-1.131 1.021-0.547-0.027-0.989-0.469-1.016-1.021h-1.411c-0.027 0.593-0.521 1.057-1.109 1.036-0.563-0.020-1.016-0.473-1.037-1.036h-1.411c0 0.287-0.115 0.563-0.313 0.76-0.203 0.199-0.473 0.313-0.76 0.313v1.411c0.593 0.027 1.052 0.521 1.032 1.109-0.016 0.563-0.469 1.016-1.032 1.037v1.411c0.593 0.021 1.052 0.516 1.032 1.109-0.016 0.563-0.469 1.016-1.032 1.037v1.411c0.593 0 1.073 0.48 1.073 1.073 0 0.588-0.48 1.073-1.073 1.073v1.411c0.593 0 1.073 0.48 1.073 1.068 0 0.593-0.48 1.073-1.073 1.073v1.416c0.593 0.021 1.052 0.516 1.032 1.109-0.016 0.563-0.469 1.011-1.032 1.032v1.416c0.593 0 1.073 0.48 1.073 1.068 0 0.593-0.48 1.073-1.073 1.073v1.416c0.593 0.021 1.052 0.516 1.032 1.104-0.016 0.563-0.469 1.021-1.032 1.037v1.411c0.593 0 1.073 0.48 1.073 1.079 0 0.588-0.48 1.068-1.073 1.068v1.416c0.589 0 1.073 0.479 1.073 1.068h1.411c0.037-0.589 0.548-1.041 1.141-1.005 0.541 0.036 0.968 0.464 1.005 1.005h1.411c0.032-0.589 0.537-1.047 1.125-1.016 0.552 0.027 0.995 0.469 1.021 1.016h1.411c0.032-0.589 0.537-1.047 1.125-1.016 0.552 0.027 0.995 0.469 1.021 1.016h1.411c0.027-0.589 0.521-1.052 1.109-1.032 0.563 0.021 1.016 0.475 1.037 1.032h1.411c0.032-0.589 0.537-1.047 1.131-1.016 0.547 0.027 0.989 0.469 1.016 1.016h1.411c0.032-0.589 0.537-1.047 1.131-1.016 0.547 0.027 0.989 0.469 1.016 1.016h1.411c0.032-0.589 0.537-1.047 1.131-1.016 0.552 0.027 0.989 0.469 1.020 1.016h1.412c0.021-0.589 0.516-1.052 1.109-1.032 0.563 0.021 1.016 0.475 1.032 1.032h1.405c0-0.281 0.115-0.557 0.313-0.755 0.197-0.199 0.473-0.313 0.76-0.313v-1.416c-0.593-0.037-1.041-0.543-1.011-1.136 0.036-0.541 0.469-0.973 1.011-1.005v-1.411c-0.593-0.032-1.052-0.537-1.021-1.125 0.027-0.552 0.469-0.995 1.021-1.021v-1.416c-0.593-0.037-1.041-0.547-1.011-1.136 0.036-0.541 0.469-0.973 1.011-1.005v-1.416c-0.593-0.027-1.052-0.532-1.021-1.125 0.027-0.547 0.469-0.989 1.021-1.021v-1.405c-0.593-0.037-1.041-0.548-1.011-1.141 0.036-0.541 0.469-0.973 1.011-1.005v-1.411c-0.593-0.032-1.052-0.537-1.021-1.125 0.027-0.552 0.469-0.995 1.021-1.021v-1.411c-0.593-0.037-1.041-0.547-1.011-1.141 0.036-0.536 0.469-0.968 1.011-1.005v-1.411c-0.593-0.032-1.052-0.537-1.021-1.125 0.027-0.552 0.469-0.989 1.021-1.021zM26.579 15.599l-8.537 8.303c0.771 0.12 1.521 0.296 2.323 0.296 1.953 0 4.199-0.593 5.715-1.219l-0.776 3.661c-2.235 1.073-3.605 1.163-4.939 1.163-1.463 0-2.859-0.48-4.285-0.48-0.808 0-1.969 0.063-2.683 0.537l-1.547-2.74 8.807-8.719h-10.135l-1.933 9.072h-4.228l4.405-20.771h13.989l-0.895 4.193h-9.729l-0.833 3.901h15.968z">
+                  </path>
+                </g>
+              </svg>
+              <h4>Filezilla</h4>
+            </article>
+            <article class="badge github" style="background-color: #282C34;">
+              <svg viewBox="0 0 24 24" fill="rgb(240, 240, 240)" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M4.0744 2.9938C4.13263 1.96371 4.37869 1.51577 5.08432 1.15606C5.84357 0.768899 7.04106 0.949072 8.45014 1.66261C9.05706 1.97009 9.11886 1.97635 10.1825 1.83998C11.5963 1.65865 13.4164 1.65929 14.7213 1.84164C15.7081 1.97954 15.7729 1.97265 16.3813 1.66453C18.3814 0.651679 19.9605 0.71795 20.5323 1.8387C20.8177 2.39812 20.8707 3.84971 20.6494 5.04695C20.5267 5.71069 20.5397 5.79356 20.8353 6.22912C22.915 9.29385 21.4165 14.2616 17.8528 16.1155C17.5801 16.2574 17.3503 16.3452 17.163 16.4167C16.5879 16.6363 16.4133 16.703 16.6247 17.7138C16.7265 18.2 16.8491 19.4088 16.8973 20.4002C16.9844 22.1922 16.9831 22.2047 16.6688 22.5703C16.241 23.0676 15.6244 23.076 15.2066 22.5902C14.9341 22.2734 14.9075 22.1238 14.9075 20.9015C14.9075 19.0952 14.7095 17.8946 14.2417 16.8658C13.6854 15.6415 14.0978 15.185 15.37 14.9114C17.1383 14.531 18.5194 13.4397 19.2892 11.8146C20.0211 10.2698 20.1314 8.13501 18.8082 6.83668C18.4319 6.3895 18.4057 5.98446 18.6744 4.76309C18.7748 4.3066 18.859 3.71768 18.8615 3.45425C18.8653 3.03823 18.8274 2.97541 18.5719 2.97541C18.4102 2.97541 17.7924 3.21062 17.1992 3.49805L16.2524 3.95695C16.1663 3.99866 16.07 4.0147 15.975 4.0038C13.5675 3.72746 11.2799 3.72319 8.86062 4.00488C8.76526 4.01598 8.66853 3.99994 8.58215 3.95802L7.63585 3.49882C7.04259 3.21087 6.42482 2.97541 6.26317 2.97541C5.88941 2.97541 5.88379 3.25135 6.22447 4.89078C6.43258 5.89203 6.57262 6.11513 5.97101 6.91572C5.06925 8.11576 4.844 9.60592 5.32757 11.1716C5.93704 13.1446 7.4295 14.4775 9.52773 14.9222C10.7926 15.1903 11.1232 15.5401 10.6402 16.9905C10.26 18.1319 10.0196 18.4261 9.46707 18.4261C8.72365 18.4261 8.25796 17.7821 8.51424 17.1082C8.62712 16.8112 8.59354 16.7795 7.89711 16.5255C5.77117 15.7504 4.14514 14.0131 3.40172 11.7223C2.82711 9.95184 3.07994 7.64739 4.00175 6.25453C4.31561 5.78028 4.32047 5.74006 4.174 4.83217C4.09113 4.31822 4.04631 3.49103 4.0744 2.9938Z"
+                    fill="rgb(240, 240, 240)"></path>
+                  <path
+                    d="M3.33203 15.9454C3.02568 15.4859 2.40481 15.3617 1.94528 15.6681C1.48576 15.9744 1.36158 16.5953 1.66793 17.0548C1.8941 17.3941 2.16467 17.6728 2.39444 17.9025C2.4368 17.9449 2.47796 17.9858 2.51815 18.0257C2.71062 18.2169 2.88056 18.3857 3.05124 18.5861C3.42875 19.0292 3.80536 19.626 4.0194 20.6962C4.11474 21.1729 4.45739 21.4297 4.64725 21.5419C4.85315 21.6635 5.07812 21.7352 5.26325 21.7819C5.64196 21.8774 6.10169 21.927 6.53799 21.9559C7.01695 21.9877 7.53592 21.998 7.99999 22.0008C8.00033 22.5527 8.44791 23.0001 8.99998 23.0001C9.55227 23.0001 9.99998 22.5524 9.99998 22.0001V21.0001C9.99998 20.4478 9.55227 20.0001 8.99998 20.0001C8.90571 20.0001 8.80372 20.0004 8.69569 20.0008C8.10883 20.0026 7.34388 20.0049 6.67018 19.9603C6.34531 19.9388 6.07825 19.9083 5.88241 19.871C5.58083 18.6871 5.09362 17.8994 4.57373 17.2891C4.34391 17.0194 4.10593 16.7834 3.91236 16.5914C3.87612 16.5555 3.84144 16.5211 3.80865 16.4883C3.5853 16.265 3.4392 16.1062 3.33203 15.9454Z"
+                    fill="rgb(240, 240, 240)"></path>
+                </g>
+              </svg>
+              <h4>Github</h4>
+            </article>
+            <article class="badge phpmyadmin" style="background-color:#282C34;">
+              <svg fill="rgb(240,240,240)" viewBox="5 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M20.804 22.613c-2.973 0.042-5.808 0.573-8.448 1.514l0.183-0.057c-3.584 1.22-3.688 1.685-6.936 1.303-1.718-0.263-3.265-0.75-4.698-1.436l0.1 0.043c1.696 1.366 3.785 2.312 6.071 2.65l0.069 0.008c2.444-0.149 4.708-0.785 6.741-1.812l-0.099 0.045c2.215-0.774 4.768-1.222 7.426-1.222 0.137 0 0.273 0.001 0.409 0.004l-0.020-0c3.437 0.216 6.645 0.763 9.727 1.614l-0.332-0.078c-1.791-0.855-3.889-1.593-6.074-2.107l-0.216-0.043c-1.147-0.27-2.464-0.425-3.817-0.425-0.030 0-0.060 0-0.090 0l0.005-0zM28.568 17.517l-22.394 3.81c1.127 0.399 1.921 1.455 1.921 2.697 0 0.042-0.001 0.084-0.003 0.125l0-0.006c-0.011 0.276-0.058 0.536-0.138 0.783l0.006-0.020c2.266-1.041 4.916-1.918 7.675-2.498l0.25-0.044c1.478-0.336 3.175-0.528 4.917-0.528 1.035 0 2.055 0.068 3.054 0.2l-0.117-0.013c0.908-2.119 2.635-3.741 4.772-4.489l0.057-0.017zM10.052 5.394s3.007 1.332 4.156 6.932c0.236 0.86 0.372 1.848 0.372 2.867 0 1.569-0.321 3.063-0.902 4.42l0.028-0.073c1.648-1.56 3.878-2.518 6.332-2.518 0.854 0 1.68 0.116 2.465 0.333l-0.065-0.015c-0.462-2.86-1.676-5.378-3.431-7.418l0.017 0.020c-2.128-2.674-5.334-4.411-8.95-4.548l-0.022-0.001zM7.831 5.348c1.551 2.219 2.556 4.924 2.767 7.849l0.003 0.051c0.033 0.384 0.051 0.83 0.051 1.281 0 1.893-0.326 3.71-0.926 5.397l0.035-0.113c0.906-1.076 2.215-1.788 3.692-1.902l0.018-0.001c0.062-0.005 0.124-0.008 0.185-0.010 0.083-0.603 0.13-1.3 0.13-2.008 0-2.296-0.498-4.476-1.391-6.437l0.040 0.097c-0.865-1.999-2.516-3.519-4.552-4.19l-0.053-0.015z">
+                  </path>
+                </g>
+              </svg>
+              <h4>phpmyadmin</h4>
+            </article>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 animate__animated animate__fadeInRight" style="animation-delay: 1s;">
+        <div class="row g-0 d-flex flex-column ">
+          <div class="col-md-2" style="width: 100%;">
+            <h2 style="margin-left: 50px; margin-top: 100px;">Mes Diplomes et formations</h2>
+          </div>
+          <div class="col-md-1" style="width: 80%;">
+            <div id="border" style="margin-top: 20px; margin-bottom: 20px; margin-left: 30px;"></div>
+          </div>
+          <ul style="width: 80%; margin-left: 50px;">
+            <li>
+              2020-<b> Brevet Collège mention Bien (collège Simon Veil)</b>
+            </li>
+            <br>
+            <li>
+              2023-<b> Bac STI2D Mention assez bien (lycée technologique Ferdinand buisson) </b>
+            </li>
+            <br>
+            <li>
+              2024-<b> BUT MMI Elbeuf 1 année (Bachelor Universitaire de Technologie des Métiers du Multimédia
+                et de l’Internet)</b>
+            </li>
+            <br>
+            <li>
+              <b style="font-family: 'Kode Mono'; color: rgb(255, 122, 122);">2026- Error: aucune donnée existant</b>
+            </li>
+            <br>
+            <li>
+              <b style="font-family: 'Kode Mono'; color: rgb(255, 122, 122);">2027- Error: aucune donnée existant</b>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
+<!-- background -->
+
+<script>
+  function createCodeRain() {
+    const container = document.querySelector('.container');
+    const codeSnippets = [
+      'function()', 'while(true)', 'if(dev){};', 'const app = {};',
+      '{ code }', '<div>', '</div>', 'npm install', 'git push',
+      'docker run', 'sudo apt-get', '#!/bin/bash'
+    ];
+
+    setInterval(() => {
+      const code = document.createElement('div');
+      code.className = 'code-rain';
+      code.style.left = Math.random() * 100 + 'vw';
+      code.textContent = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+      container.appendChild(code);
+
+      setTimeout(() => {
+        container.removeChild(code);
+      }, 15000);
+    }, 1000);
+  }
+
+  function createNetwork() {
+    const network = document.getElementById('network');
+    const nodes = 15; // Nombre de nœuds
+    const nodeElements = [];
+    const lines = [];
+
+    function createNode() {
+      return {
+        element: document.createElement('div'),
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 1.5,
+        vy: (Math.random() - 0.5) * 1.5
+      };
+    }
+
+    // Création des nœuds
+    for (let i = 0; i < nodes; i++) {
+      const node = createNode();
+      node.element.className = 'node';
+      network.appendChild(node.element);
+      nodeElements.push(node);
+    }
+
+    // Création des connexions
+    for (let i = 0; i < nodes; i++) {
+      for (let j = i + 1; j < nodes; j++) {
+        if (Math.random() < 0.5) { // Augmenté la probabilité de connexion
+          const line = document.createElement('div');
+          line.className = 'line';
+          network.appendChild(line);
+          lines.push({
+            element: line,
+            from: nodeElements[i],
+            to: nodeElements[j]
+          });
+        }
+      }
+    }
+
+    function updatePositions() {
+      // Mise à jour des positions des nœuds
+      nodeElements.forEach(node => {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        // Rebond sur les bords
+        if (node.x <= 0 || node.x >= window.innerWidth) {
+          node.vx *= -1;
+          node.x = Math.max(0, Math.min(window.innerWidth, node.x));
+        }
+        if (node.y <= 0 || node.y >= window.innerHeight) {
+          node.vy *= -1;
+          node.y = Math.max(0, Math.min(window.innerHeight, node.y));
+        }
+
+        // Mise à jour de la position du nœud
+        node.element.style.left = `${node.x}px`;
+        node.element.style.top = `${node.y}px`;
+      });
+
+      // Mise à jour des lignes
+      lines.forEach(line => {
+        const dx = line.to.x - line.from.x;
+        const dy = line.to.y - line.from.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const angle = Math.atan2(dy, dx);
+
+        line.element.style.width = `${distance}px`;
+        line.element.style.left = `${line.from.x}px`;
+        line.element.style.top = `${line.from.y}px`;
+        line.element.style.transform = `rotate(${angle}rad)`;
+      });
+
+      requestAnimationFrame(updatePositions);
+    }
+
+    // Gestion du redimensionnement
+    window.addEventListener('resize', () => {
+      nodeElements.forEach(node => {
+        node.x = Math.min(node.x, window.innerWidth);
+        node.y = Math.min(node.y, window.innerHeight);
+      });
+    });
+
+    updatePositions();
+  }
+
+  createCodeRain();
+  createNetwork();
+</script>
